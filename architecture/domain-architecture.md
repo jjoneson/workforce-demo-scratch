@@ -59,6 +59,6 @@ Table("OrderLineItem", "Order Line Item Data") {
 ' -- Relationships
 
 Customer "1" -- "0..*" Order
-Order "1" -- "1..*" OrderLineItem
+Order "1" -- "0..*" OrderLineItem
 Product "1" -- "0..*" OrderLineItem
 @enduml
