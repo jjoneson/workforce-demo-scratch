@@ -46,3 +46,21 @@ openapi: 3.0.0
                           type: string
                           format: date
                           description: The customer date of birth.
+                      address_line1:
+                          type: string
+                          description: The customer address line 1.
+                      address_line2:
+                          type: string
+                          description: The customer address line 2.
+                      city:
+                          type: string
+                          description: The customer city.
+                      state:
+                          type: string
+                          description: The customer state.
+                      zip_code:
+                          type: string
+                          description: The customer zip code.
+                      country:
+                          type: string
+                          description: The customer country.
