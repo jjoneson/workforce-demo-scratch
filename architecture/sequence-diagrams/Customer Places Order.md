@@ -4,15 +4,12 @@ title Customer Places Order
 actor Customer
 participant Website
 participant OrderAPI as "Order API"
-participant OrderLineItemAPI as "OrderLineItem API"
+participant CustomerAPI as "Customer API"
+participant ProductAPI as "Product API"
+participant OrderLineItemAPI as "Order Line Item API"
 participant EmailAPI as "Email API"
 
-Customer -> Website: Login
-Website -> Customer: Products Page
-Customer -> Website: Add to Cart
-Website -> Customer: Checkout Page
-Customer -> Website: Confirm Shipping/Billing 
-Customer -> Website: Confirm Payment
+Customer -> Website: Place Order
 Website -> OrderAPI: POST /orders
 note right
 {
@@ -20,15 +17,20 @@ note right
     "order_total": 100.00
 }
 end note
+OrderAPI -> CustomerAPI: GET /customers/1
+CustomerAPI -> OrderAPI: Customer Data 200 OK
+OrderAPI -> ProductAPI: GET /products
+ProductAPI -> OrderAPI: Product Data 200 OK
 OrderAPI -> OrderLineItemAPI: POST /orderlineitems
 note right
 {
     "order_id": 1,
-    "product_ids": [1,2],
-    "quantities": [1,2]
-} 
+    "product_id": 1,
+    "quantity": 1,
+    "price": 50.00
+}
 end note
-OrderLineItemAPI -> OrderAPI: OrderLineItems Created 201 Created
+OrderLineItemAPI -> OrderAPI: Order Line Item Created 201 Created
 OrderAPI -> EmailAPI: Send Confirmation Email POST /emails
 note right
 {
