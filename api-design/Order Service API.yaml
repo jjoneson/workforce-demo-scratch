@@ -9,8 +9,8 @@ openapi: 3.0.0
       paths:
           /orders/{order_id}:
               patch:
-                  summary: Process Return Request
-                  description: Updates the order status to "Return Requested" and generates a return shipping label.
+                  summary: Update Order Status
+                  description: Updates the order status.
                   parameters:
                       - in: path
                         name: order_id
@@ -22,44 +22,52 @@ openapi: 3.0.0
                       content:
                           application/json:
                               schema:
-                                  $ref: '#/components/schemas/ReturnRequest'
+                                  $ref: '#/components/schemas/OrderStatusUpdate'
                   responses:
                       '200':
-                          description: Order Updated
+                          description: Order Status Updated
                           content:
                               application/json:
                                   schema:
                                       $ref: '#/components/schemas/Order'
+          /refunds:
+              post:
+                  summary: Process Refund
+                  description: Processes a refund for an order.
+                  requestBody:
+                      required: true
+                      content:
+                          application/json:
+                              schema:
+                                  $ref: '#/components/schemas/RefundRequest'
+                  responses:
+                      '200':
+                          description: Refund Processed
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: '#/components/schemas/RefundResponse'
       components:
           schemas:
-              ReturnRequest:
+              OrderStatusUpdate:
                   type: object
                   properties:
                       order_status:
                           type: string
-                          enum: 
-                              - Return Requested
-                      customer_email:
-                          type: string
-                          format: email
-                          description: The customer's email address.
-              Order:
+                          description: The updated order status.
+              RefundRequest:
                   type: object
                   properties:
                       order_id:
                           type: integer
                           description: The order id.
-                      customer_id:
-                          type: integer
-                          description: The customer id.
-                      order_date:
-                          type: string
-                          format: date-time
-                          description: The order date.
-                      order_total:
+                      amount:
                           type: number
                           format: double
-                          description: The order total.
-                      order_status:
+                          description: The refund amount.
+              RefundResponse:
+                  type: object
+                  properties:
+                      status:
                           type: string
-                          description: The order status.
+                          description: The refund status.
