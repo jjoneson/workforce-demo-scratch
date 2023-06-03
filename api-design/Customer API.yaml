@@ -1,0 +1,66 @@
+
+openapi: 3.0.0
+      info:
+        title: Customer API
+        description: Manages Customers.
+        version: 1.0.0
+      servers:
+          - url: http://localhost:8080
+      paths:
+          /customers:
+              post:
+                  summary: Create Customer
+                  description: Creates a customer.
+                  requestBody:
+                      required: true
+                      content:
+                          application/json:
+                              schema:
+                                  $ref: '#/components/schemas/Customer'
+                  responses:
+                      '201':
+                          description: Customer Created
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: '#/components/schemas/Customer'
+      components:
+          schemas:
+              Customer:
+                  type: object
+                  properties:
+                      id:
+                          type: integer
+                          description: The customer id.
+                      first_name:
+                          type: string
+                          description: The customer first name.
+                      last_name:
+                          type: string
+                          description: The customer last name.
+                      email:
+                          type: string
+                          format: email
+                          description: The customer email.
+                      date_of_birth:
+                          type: string
+                          format: date
+                          description: The customer date of birth.
+                      address_line1:
+                          type: string
+                          description: The customer address line 1.
+                      address_line2:
+                          type: string
+                          description: The customer address line 2.
+                      city:
+                          type: string
+                          description: The customer city.
+                      state:
+                          type: string
+                          description: The customer state.
+                      zip_code:
+                          type: string
+                          description: The customer zip code.
+                      country:
+                          type: string
+                          description: The customer country.
