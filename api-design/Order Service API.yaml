@@ -46,7 +46,7 @@ openapi: 3.0.0
                           content:
                               application/json:
                                   schema:
-                                      $ref: '#/components/schemas/RefundResponse'
+                                      $ref: '#/components/schemas/Refund'
       components:
           schemas:
               OrderStatusUpdate:
@@ -65,9 +65,16 @@ openapi: 3.0.0
                           type: number
                           format: double
                           description: The refund amount.
-              RefundResponse:
+              Refund:
                   type: object
                   properties:
-                      status:
-                          type: string
-                          description: The refund status.
+                      refund_id:
+                          type: integer
+                          description: The refund id.
+                      order_id:
+                          type: integer
+                          description: The associated order id.
+                      amount:
+                          type: number
+                          format: double
+                          description: The refund amount.
