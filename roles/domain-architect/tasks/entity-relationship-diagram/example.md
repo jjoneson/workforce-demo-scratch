@@ -1,4 +1,4 @@
-<entityRelationshipDiagram title="Domain ERD">
+<domainDesign title="Domain ERD">
 @startuml Domain ERD
 title Domain ERD
 !procedure Table(name,desc)
@@ -45,4 +45,4 @@ Table("Order", "Order Data") {
 
 Customer "1" -- "0..*" Order
 @enduml
-</entityRelationshipDiagram>
+</domainDesign>

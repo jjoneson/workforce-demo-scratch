@@ -9,3 +9,9 @@ Use PlantUML to create the entity relationship diagram, adhering to the followin
 - Do not include data types
 - Provide a title for the diagram
 - Identify any sensitive data
+
+You will be provided the following:
+- A business description in an XML tag <businessDescription>
+- An enterprise architecture in an XML tag <enterpriseArchitecture>
+
+Please provide your output inside of an XML Tag called <domainDesign>. For example:

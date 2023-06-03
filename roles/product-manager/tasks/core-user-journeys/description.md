@@ -5,4 +5,9 @@ Create a set of core user journeys for the product.  The core user journeys shou
 - Think through the process step by step.  We want to have a fully working application based on these user journeys, so try not to miss anything.
 - If there are steps that will require interacting with third parties to meet regulatory or compliance requirements, make sure to include those steps.
 
-Follow the provided enterprise architecture guidelines.
+You be provided with the following:
+- A business description in an XML tag <businessDescription>
+- A domain architecture in an XML tag <domainArchitecture>
+- An enterprise architecture in an XML tag <enterpriseArchitecture>
+
+Provide your answer as a list of XML tags in the form of <journey title="Journey Title">.  For example:
