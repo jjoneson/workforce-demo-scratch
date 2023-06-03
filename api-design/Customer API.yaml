@@ -34,33 +34,33 @@ openapi: 3.0.0
                           description: The customer id.
                       first_name:
                           type: string
-                          description: The customer first name.
+                          description: The first name.
                       last_name:
                           type: string
-                          description: The customer last name.
+                          description: The last name.
                       email:
                           type: string
                           format: email
-                          description: The customer email.
+                          description: The email.
                       date_of_birth:
                           type: string
                           format: date
-                          description: The customer date of birth.
+                          description: The date of birth.
                       address_line1:
                           type: string
-                          description: The customer address line 1.
+                          description: The address line 1.
                       address_line2:
                           type: string
-                          description: The customer address line 2.
+                          description: The address line 2.
                       city:
                           type: string
-                          description: The customer city.
+                          description: The city.
                       state:
                           type: string
-                          description: The customer state.
+                          description: The state.
                       zip_code:
                           type: string
-                          description: The customer zip code.
+                          description: The zip code.
                       country:
                           type: string
-                          description: The customer country.
+                          description: The country.
