@@ -24,6 +24,29 @@ openapi: 3.0.0
                               application/json:
                                   schema:
                                       $ref: '#/components/schemas/Order'
+          /orders/{orderId}/returns:
+              post:
+                  summary: Request Return
+                  description: Requests a return for an order.
+                  parameters:
+                      - in: path
+                        name: orderId
+                        required: true
+                        schema:
+                            type: integer
+                  requestBody:
+                      required: true
+                      content:
+                          application/json:
+                              schema:
+                                  $ref: '#/components/schemas/ReturnRequest'
+                  responses:
+                      '200':
+                          description: Return Requested
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: '#/components/schemas/Order'
       components:
           schemas:
               Order:
@@ -46,3 +69,9 @@ openapi: 3.0.0
                       order_status:
                           type: string
                           description: The order status.
+              ReturnRequest:
+                  type: object
+                  properties:
+                      return_reason:
+                          type: string
+                          description: The reason for the return.
