@@ -29,7 +29,7 @@ openapi: 3.0.0
               SupportTicket:
                   type: object
                   properties:
-                      id:
+                      ticket_id:
                           type: integer
                           description: The support ticket id.
                       customer_id:
@@ -38,9 +38,6 @@ openapi: 3.0.0
                       issue_description:
                           type: string
                           description: The issue description.
-                      status:
+                      ticket_status:
                           type: string
-                          description: The support ticket status.
-                      resolution:
-                          type: string
-                          description: The resolution.
+                          description: The ticket status.
