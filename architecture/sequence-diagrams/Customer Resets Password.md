@@ -3,33 +3,34 @@
 title Customer Resets Password
 actor Customer
 participant Website
-participant IdentityService as "Identity Service"
+participant CustomerService as "Customer Service"
 participant EmailService as "Email Service"
 
-Customer -> Website: Click "Forgot Password"
-Website -> Customer: Prompt for email
-Customer -> Website: Enter email
-Website -> IdentityService: GET /customers?email={email}
-IdentityService -> Website: Customer Found 200 OK
-Website -> EmailService: Send Password Reset Email POST /emails
+Customer -> Website: Navigate to Password Reset Page
+Website -> Customer: Enter Email Address
+Customer -> Website: Enter Email
+Website -> EmailService: Generate Password Reset Link POST /emails
 note right
 {
-    "body": "Please click the link below to reset your password.",
+    "body": "Please click the following link to reset your password: https://website.com/reset?token=abc123",
     "customer_id": 1,
-    "reset_token": "abc123" 
 }
 end note
-EmailService -> Website: Email Sent 200 OK
-Customer -> Website: Click password reset link
-Website -> IdentityService: POST /customers/reset_password
+EmailService -> Website: Link Generated 200 OK
+Website -> Customer: Link Sent to Email
+Customer -> Website: Click Password Reset Link
+Website -> CustomerService: Validate Password Reset Token GET /customers/reset?token=abc123
+CustomerService -> Website: Token Valid 200 OK
+Website -> Customer: Enter New Password
+Customer -> Website: Enter New Password
+Website -> CustomerService: Update Customer Password PATCH /customers
 note right 
 {
-    "customer_id": 1,
-    "reset_token": "abc123",
-    "new_password": "password1234"
+    "password": "newpassword"
+    "customer_id": 1
 }
 end note
-IdentityService -> Website: Password Reset 200 OK
-Website -> Customer: Password successfully reset
+CustomerService -> Website: Password Updated 200 OK
+Website -> Customer: Password Reset Successful!
 
 @enduml
