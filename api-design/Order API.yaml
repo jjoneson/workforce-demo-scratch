@@ -7,42 +7,61 @@ openapi: 3.0.0
       servers:
           - url: http://localhost:8080
       paths:
-          /orders:
-              post:
-                  summary: Create Order
-                  description: Creates an order.
+          /orders/{id}:
+              patch:
+                  summary: Update Order Status
+                  description: Updates the order status.
+                  parameters:
+                      - in: path
+                        name: id
+                        required: true
+                        schema:
+                            type: integer
                   requestBody:
                       required: true
                       content:
                           application/json:
                               schema:
-                                  $ref: '#/components/schemas/Order'
+                                  $ref: '#/components/schemas/OrderStatusUpdate'
                   responses:
-                      '201':
-                          description: Order Created
+                      '200':
+                          description: Order Updated
                           content:
                               application/json:
                                   schema:
                                       $ref: '#/components/schemas/Order'
+          /refunds:
+              post:
+                  summary: Issue Refund
+                  description: Issues a refund for an order.
+                  requestBody:
+                      required: true
+                      content:
+                          application/json:
+                              schema:
+                                  $ref: '#/components/schemas/Refund'
+                  responses:
+                      '200':
+                          description: Refund Issued
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: '#/components/schemas/Refund'
       components:
           schemas:
-              Order:
+              OrderStatusUpdate:
+                  type: object
+                  properties:
+                      order_status:
+                          type: string
+                          description: The new order status.
+              Refund:
                   type: object
                   properties:
                       order_id:
                           type: integer
                           description: The order id.
-                      customer_id:
-                          type: integer
-                          description: The customer id.
-                      order_date:
-                          type: string
-                          format: date-time
-                          description: The order date.
-                      order_total:
+                      amount:
                           type: number
                           format: double
-                          description: The order total.
-                      order_status:
-                          type: string
-                          description: The order status.
+                          description: The refund amount.
