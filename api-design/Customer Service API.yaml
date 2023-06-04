@@ -1,0 +1,63 @@
+
+openapi: 3.0.0
+info:
+  title: Customer Service API
+  description: Manages customer data.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /customers:
+    get:
+      summary: Get Customer by Email
+      description: Gets a customer by email address.
+      parameters:
+        - in: query
+          name: email
+          schema:
+            type: string
+          required: true
+          description: The customer's email address.
+      responses:
+        '200':
+          description: Customer found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+    patch:
+      summary: Update Customer Password
+      description: Updates a customer's password.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: The customer ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePassword'
+      responses:
+        '204':
+          description: Password updated
+components:
+  schemas:
+    Customer:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The customer ID.
+        email:
+          type: string
+          description: The customer's email address.
+    UpdatePassword:
+      type: object
+      properties:
+        password:
+          type: string
+          description: The new password.
