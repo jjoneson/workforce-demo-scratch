@@ -1,0 +1,46 @@
+
+openapi: 3.0.0
+      info:
+        title: Support API
+        description: Manages Support Tickets.
+        version: 1.0.0
+      servers:
+          - url: http://localhost:8080
+      paths:
+          /support_tickets:
+              post:
+                  summary: Create Support Ticket
+                  description: Creates a support ticket.
+                  requestBody:
+                      required: true
+                      content:
+                          application/json:
+                              schema:
+                                  $ref: '#/components/schemas/SupportTicket'
+                  responses:
+                      '201':
+                          description: Support Ticket Created
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: '#/components/schemas/SupportTicket'
+      components:
+          schemas:
+              SupportTicket:
+                  type: object
+                  properties:
+                      id:
+                          type: integer
+                          description: The support ticket id.
+                      customer_id:
+                          type: integer
+                          description: The customer id.
+                      issue_description:
+                          type: string
+                          description: The issue description.
+                      status:
+                          type: string
+                          description: The support ticket status.
+                      resolution:
+                          type: string
+                          description: The resolution.
