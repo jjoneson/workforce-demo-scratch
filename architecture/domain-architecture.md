@@ -1,8 +1,7 @@
 
 ```plantuml
-@startuml Enameled Cast Iron Cookware Company Domain ERD
-title Enameled Cast Iron Cookware Company Domain ERD
-
+@startuml Domain ERD
+title Domain ERD
 !procedure Table(name,desc)
 class name << (T,#FFAAAA) desc >>
 !endprocedure
@@ -47,19 +46,20 @@ Table("Product", "Product Data") {
     name
     description
     price
-    image_url
+    inventory_level
 }
-Table("OrderLineItem", "Order Line Item Data") {
+Table("Order_Line_Item", "Order Line Item Data") {
     primary_key(id)
     foreign_key(order_id)
     foreign_key(product_id)
     quantity
+    line_item_total
 }
 
 ' -- Relationships
 
 Customer "1" -- "0..*" Order
-Order "1" -- "0..*" OrderLineItem
-Product "1" -- "0..*" OrderLineItem
+Order "1" -- "0..*" Order_Line_Item
+Product "1" -- "0..*" Order_Line_Item
 @enduml
-```
+``` 
