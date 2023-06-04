@@ -1,4 +1,5 @@
 <domainDesign title="Domain ERD">
+```plantuml
 @startuml Domain ERD
 title Domain ERD
 !procedure Table(name,desc)
@@ -45,4 +46,5 @@ Table("Order", "Order Data") {
 
 Customer "1" -- "0..*" Order
 @enduml
+```
 </domainDesign>

@@ -1,4 +1,5 @@
 <sequenceDiagram title="Customer Places Order">
+```plantuml
 @startuml Customer Places Order
 title Customer Places Order
 actor Customer
@@ -33,4 +34,5 @@ EmailAPI -> OrderAPI: Email Sent 200 OK
 OrderAPI -> Website: Order Created 201 Created
 
 @enduml
+```
 </sequenceDiagram>
