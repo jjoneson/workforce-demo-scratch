@@ -1,0 +1,54 @@
+
+openapi: 3.0.0
+      info:
+        title: Customer Service API
+        description: Manages Customer Data.
+        version: 1.0.0
+      servers:
+          - url: http://customerservice.com
+      paths:
+          /customers/{id}:
+              patch:
+                  summary: Update Customer Password
+                  description: Updates a customer's password.
+                  parameters:
+                      - in: path
+                        name: id
+                        required: true
+                        schema:
+                            type: integer
+                  requestBody:
+                      required: true
+                      content:
+                          application/json:
+                              schema:
+                                  type: object
+                                  properties:
+                                      password:
+                                          type: string
+                                          description: The new password.
+                  responses:
+                      '200':
+                          description: Password Updated
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: '#/components/schemas/Customer'
+      components:
+          schemas:
+              Customer:
+                  type: object
+                  properties:
+                      id:
+                          type: integer
+                          description: The customer id.
+                      first_name:
+                          type: string
+                          description: The customer's first name.
+                      last_name:
+                          type: string
+                          description: The customer's last name.
+                      email:
+                          type: string
+                          format: email
+                          description: The customer's email address.
