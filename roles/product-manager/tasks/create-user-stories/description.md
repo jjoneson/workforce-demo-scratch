@@ -12,4 +12,4 @@ You will be provided with the following:
 - A Domain Architecture in an XML tag <domainArchitecture>
 - A Software Architecture in an XML tag <softwareArchitecture>
 
-Please provide your response as two sets of XML tags <story> and <apiDesign>.  For example:
+Please provide your response as two sets of XML tags <story> and <apiDesign>.  Provide designs for multiple APIs if necessary.  Here are some examples:
