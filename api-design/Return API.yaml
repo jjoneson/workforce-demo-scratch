@@ -1,0 +1,46 @@
+
+openapi: 3.0.0
+      info:
+        title: Return API
+        description: Manages Returns.
+        version: 1.0.0
+      servers:
+          - url: http://localhost:8080
+      paths:
+          /returns:
+              post:
+                  summary: Create Return
+                  description: Creates a return request.
+                  requestBody:
+                      required: true
+                      content:
+                          application/json:
+                              schema:
+                                  $ref: '#/components/schemas/Return'
+                  responses:
+                      '201':
+                          description: Return Created
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: '#/components/schemas/Return'
+      components:
+          schemas:
+              Return:
+                  type: object
+                  properties:
+                      return_id:
+                          type: integer
+                          description: The return id.
+                      order_id:
+                          type: integer
+                          description: The order id.
+                      product_id:
+                          type: integer
+                          description: The product id.
+                      reason:
+                          type: string
+                          description: The reason for return.
+                      status:
+                          type: string
+                          description: The status of the return.
