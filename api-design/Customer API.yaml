@@ -42,7 +42,3 @@ openapi: 3.0.0
                           type: string
                           format: email
                           description: The customer email.
-                      password:
-                          type: string
-                          format: password
-                          description: The customer password.
