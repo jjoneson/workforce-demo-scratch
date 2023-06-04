@@ -1,0 +1,37 @@
+
+openapi: 3.0.0
+      info:
+        title: Email API
+        description: Sends Emails.
+        version: 1.0.0
+      servers:
+          - url: http://localhost:8080
+      paths:
+          /emails:
+              post:
+                  summary: Send Email
+                  description: Sends an email.
+                  requestBody:
+                      required: true
+                      content:
+                          application/json:
+                              schema:
+                                  $ref: '#/components/schemas/Email'
+                  responses:
+                      '200':
+                          description: Email Sent
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: '#/components/schemas/Email'
+      components:
+          schemas:
+              Email:
+                  type: object
+                  properties:
+                      body:
+                          type: string
+                          description: The email body.
+                      customer_id:
+                          type: integer
+                          description: The customer id.
