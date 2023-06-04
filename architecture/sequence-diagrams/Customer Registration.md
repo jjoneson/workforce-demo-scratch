@@ -25,8 +25,8 @@ note right
 {
     "to": "john@example.com",
     "subject": "Welcome!",
-    "body": "Welcome to the site! Please click here to set your password: [link]"
-} 
+    "body": "Welcome to the website! Please click here to set your password: [link]"
+}
 end note
 EmailService -> CustomerService: Email Sent 200 OK
 
