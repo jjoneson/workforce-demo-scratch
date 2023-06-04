@@ -24,45 +24,6 @@ openapi: 3.0.0
                               application/json:
                                   schema:
                                       $ref: '#/components/schemas/ReturnRequest'
-          /returns/{return_id}:
-              get:
-                  summary: Get Return Request
-                  description: Gets a return request.
-                  parameters:
-                      - in: path
-                        name: return_id
-                        required: true
-                        schema:
-                            type: integer
-                  responses:
-                      '200':
-                          description: Return Request
-                          content:
-                              application/json:
-                                  schema:
-                                      $ref: '#/components/schemas/ReturnRequest'
-              patch:
-                  summary: Update Return Request Status
-                  description: Updates the status of a return request.
-                  parameters:
-                      - in: path
-                        name: return_id
-                        required: true
-                        schema:
-                            type: integer
-                  requestBody:
-                      required: true
-                      content:
-                          application/json:
-                              schema:
-                                  $ref: '#/components/schemas/ReturnStatusUpdate'
-                  responses:
-                      '200':
-                          description: Return Request Updated
-                          content:
-                              application/json:
-                                  schema:
-                                      $ref: '#/components/schemas/ReturnRequest'
       components:
           schemas:
               ReturnRequest:
@@ -70,19 +31,13 @@ openapi: 3.0.0
                   properties:
                       return_id:
                           type: integer
-                          description: The return request id.
+                          description: The return id.
                       order_id:
                           type: integer
-                          description: The associated order id.
+                          description: The order id.
                       reason:
                           type: string
                           description: The reason for the return.
-                      status:
+                      return_status:
                           type: string
-                          description: The status of the return request.
-              ReturnStatusUpdate:
-                  type: object
-                  properties:
-                      status:
-                          type: string
-                          description: The updated status of the return request.
+                          description: The return status.
