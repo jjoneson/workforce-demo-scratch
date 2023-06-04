@@ -24,12 +24,50 @@ openapi: 3.0.0
                               application/json:
                                   schema:
                                       $ref: '#/components/schemas/SupportTicket'
+              get:
+                  summary: Get Support Ticket
+                  description: Gets a support ticket.
+                  parameters:
+                      - in: path
+                        name: id
+                        required: true
+                        schema:
+                            type: integer
+                  responses:
+                      '200':
+                          description: Support Ticket
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: '#/components/schemas/SupportTicket'
+              put:
+                  summary: Update Support Ticket
+                  description: Updates a support ticket.
+                  parameters:
+                      - in: path
+                        name: id
+                        required: true
+                        schema:
+                            type: integer
+                  requestBody:
+                      required: true
+                      content:
+                          application/json:
+                              schema:
+                                  $ref: '#/components/schemas/SupportTicket'
+                  responses:
+                      '200':
+                          description: Support Ticket Updated
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: '#/components/schemas/SupportTicket'
       components:
           schemas:
               SupportTicket:
                   type: object
                   properties:
-                      ticket_id:
+                      id:
                           type: integer
                           description: The support ticket id.
                       customer_id:
@@ -38,6 +76,9 @@ openapi: 3.0.0
                       issue_description:
                           type: string
                           description: The issue description.
-                      ticket_status:
+                      status:
                           type: string
-                          description: The ticket status.
+                          description: The support ticket status.
+                      resolution:
+                          type: string
+                          description: The resolution.
