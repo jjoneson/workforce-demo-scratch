@@ -24,10 +24,32 @@ openapi: 3.0.0
                               application/json:
                                   schema:
                                       $ref: '#/components/schemas/Customer'
-          /customers/verify_email:
+          /customers/{id}:
+              get:
+                  summary: Get Customer
+                  description: Gets a customer by id.
+                  parameters:
+                      - in: path
+                        name: id
+                        required: true
+                        schema:
+                            type: integer
+                  responses:
+                      '200':
+                          description: Customer Found
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: '#/components/schemas/Customer'
               patch:
                   summary: Verify Email
                   description: Verifies a customer's email address.
+                  parameters:
+                      - in: path
+                        name: id
+                        required: true
+                        schema:
+                            type: integer
                   requestBody:
                       required: true
                       content:
