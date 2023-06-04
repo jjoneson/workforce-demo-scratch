@@ -1,0 +1,88 @@
+
+openapi: 3.0.0
+      info:
+        title: Return API
+        description: Manages Product Returns.
+        version: 1.0.0
+      servers:
+          - url: http://localhost:8080
+      paths:
+          /returns:
+              post:
+                  summary: Create Return Request
+                  description: Creates a return request.
+                  requestBody:
+                      required: true
+                      content:
+                          application/json:
+                              schema:
+                                  $ref: '#/components/schemas/ReturnRequest'
+                  responses:
+                      '201':
+                          description: Return Request Created
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: '#/components/schemas/ReturnRequest'
+          /returns/{return_id}:
+              get:
+                  summary: Get Return Request
+                  description: Gets a return request.
+                  parameters:
+                      - in: path
+                        name: return_id
+                        required: true
+                        schema:
+                            type: integer
+                  responses:
+                      '200':
+                          description: Return Request
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: '#/components/schemas/ReturnRequest'
+              patch:
+                  summary: Update Return Request Status
+                  description: Updates the status of a return request.
+                  parameters:
+                      - in: path
+                        name: return_id
+                        required: true
+                        schema:
+                            type: integer
+                  requestBody:
+                      required: true
+                      content:
+                          application/json:
+                              schema:
+                                  $ref: '#/components/schemas/ReturnStatusUpdate'
+                  responses:
+                      '200':
+                          description: Return Request Updated
+                          content:
+                              application/json:
+                                  schema:
+                                      $ref: '#/components/schemas/ReturnRequest'
+      components:
+          schemas:
+              ReturnRequest:
+                  type: object
+                  properties:
+                      return_id:
+                          type: integer
+                          description: The return request id.
+                      order_id:
+                          type: integer
+                          description: The associated order id.
+                      reason:
+                          type: string
+                          description: The reason for the return.
+                      status:
+                          type: string
+                          description: The status of the return request.
+              ReturnStatusUpdate:
+                  type: object
+                  properties:
+                      status:
+                          type: string
+                          description: The updated status of the return request.
