@@ -30,10 +30,10 @@ CustomerService -> Website: Customer Created 201 Created
 
 Customer -> Website: Verify Email and Set Password
 Website -> CustomerService: PATCH /customers/verify_email
-note right 
+note right
 {
     "email": "john@example.com",
-    "password": "password123"
+    "password": "password123" 
 }
 end note
 CustomerService -> Website: Email Verified 200 OK
