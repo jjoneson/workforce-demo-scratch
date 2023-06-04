@@ -35,3 +35,6 @@ openapi: 3.0.0
                       customer_id:
                           type: integer
                           description: The customer id.
+                      ticket_id:
+                          type: integer
+                          description: The support ticket id.
