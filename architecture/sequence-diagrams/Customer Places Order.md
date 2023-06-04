@@ -14,7 +14,7 @@ Customer -> Website: Login
 Website -> CustomerAPI: GET /customers/{id}
 CustomerAPI -> Website: Customer Details 200 OK
 
-Customer -> Website: Add to Cart
+Customer -> Website: Add Items to Cart
 Website -> ProductAPI: GET /products/{id}
 ProductAPI -> Website: Product Details 200 OK
 
@@ -45,7 +45,7 @@ note right
 end note
 FulfillmentAPI -> OrderAPI: Fulfillment Created 201 Created
 
-FulfillmentAPI -> EmailAPI: Send Shipment Email POST /emails
+FulfillmentAPI -> EmailAPI: Send Shipment Notification Email POST /emails
 note right
 {
     "body": "Your order has shipped."
